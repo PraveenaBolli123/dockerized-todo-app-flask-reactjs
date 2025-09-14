@@ -5,7 +5,7 @@ docker frontend image
 base image is node:22-alpine3.21 
 created working directory and copied package.json files then install npm and all dependencies from the package.json files
 exposed port : 5173
-CMD arguemnets npm run dev and 0.0.0.0 to run this on all host  
+CMD arguemnets npm run dev and 0.0.0.0 to run this on all host  machine
 
 
 docker compose
