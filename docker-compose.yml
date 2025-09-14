@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    
+    container_name: todo-backend
+    env_file:
+      - ./backend/.env
+
+    volumes:
+      - .backend/db_data:/app/db_data
+  
+
+    ports:
+      - "5000:5000"
+    networks:
+      - todo-network
+    
+
+  frontend:
+    build: ./frontend
+    container_name: todo-frontend
+    environment:
+      - VITE_API_URL=http://todo-backend:5000
+    ports:
+      - "5173:5173"
+    networks:
+      - todo-network
+    depends_on:
+      - backend
+
+networks:
+  todo-network:
+    driver: bridge
